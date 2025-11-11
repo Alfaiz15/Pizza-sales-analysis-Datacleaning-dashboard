@@ -1,0 +1,11 @@
+;;;;;;;;;;;;;
+Project: Data Cleaning – IMDB Movie Dataset;;;;;;;;;;;;;
+;;;;;;;;;;;;;
+No;Tindakan / Deskripsi;Rumus ;Hasil / Insight;;;;;;;;;;
+1;Mengecek dan Mengisi Data Kosong: Memeriksa sel kosong di kolom Durasi, Score, Country;"=ISBLANK(B2) =IF(ISBLANK(C2),""N/A"",C2)";Semua sel memiliki nilai sehingga analisis tidak terganggu;;;;;;;;;;
+2;Menghapus Duplikasi: Menandai dan menghapus baris film yang sama;"=IF(COUNTIF(A$2:A2,A2)>1,""Duplicate"",""Unique"")";Dataset menjadi unik, tidak ada entri ganda;;;;;;;;;;
+3;Merapikan dan Menstandarkan Format: Menghapus spasi ekstra, menyamakan kapitalisasi, format tanggal;=TRIM(D2) =UPPER(D2) =PROPER(D2) =DATEVALUE(E2);Data rapi dan mudah dibaca;;;;;;;;;;
+4;Menangani Nilai Tidak Masuk Akal / Outlier: Menandai skor negatif atau durasi salah ketik;"=IF(F2<0,""Check"",""OK"")";Dataset hanya berisi data valid;;;;;;;;;;
+5;Memperbaiki Kategori Tidak Konsisten: Menyamakan penulisan negara, genre, rating;"=IF(G2=""US"",""USA"",G2) =UPPER(TRIM(G2))";Analisis berdasarkan kategori menjadi akurat;;;;;;;;;;
+6;Menggabungkan Data dari Sheet Lain: Mengambil data tambahan dan gabungkan info film;"=VLOOKUP(A2,Sheet2!A:B,2,FALSE) =CONCATENATE(B2,"" - "",C2)";Setiap baris memiliki informasi lengkap;;;;;;;;;;
+7;Menyiapkan Data untuk Analisis: Mengecek keseluruhan dataset;–;Dataset bersih, konsisten, siap dipakai pivot table / grafik / laporan;;;;;;;;;;
