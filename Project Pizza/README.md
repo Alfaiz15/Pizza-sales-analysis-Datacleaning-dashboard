@@ -1,1 +1,53 @@
-🍕 Data-Driven Operations: Analisis Kinerja Penjualan Pizza untuk Optimasi Revenue dan Efisiensi Inventaris📄 Ringkasan ProyekProyek ini bertujuan melakukan analisis komprehensif terhadap data penjualan pizza selama setahun (2015). Fokus utama analisis adalah mengidentifikasi Key Performance Indicators (KPI) operasional dan tren penjualan, yang hasilnya dirangkum dalam Dashboard Interaktif (dibuat menggunakan Excel/Google Sheets) untuk mendukung pengambilan keputusan strategis oleh tim Operasional dan Manajemen.Fokus Analisis: Operations & Data Analyst.🎯 Tujuan Utama (Business Questions)Analisis ini menjawab pertanyaan-pertanyaan kunci yang tertuang dalam Data Pizza.xlsx - Question.csv:Kinerja Global: Berapa Total Revenue, Total Order, dan Average Order Value (AOV)?Tren Waktu: Bagaimana pola pendapatan bulanan (Seasonality) dan jam sibuk operasional (Peak Hours)?Prioritas Produk: Apa saja 10 pizza terlaris (berdasarkan Quantity) dan kategori pizza terlaris?Strategi Harga: Bagaimana kontribusi Revenue berdasarkan Kategori dan Ukuran Pizza?🛠️ Tools dan DataTools: Microsoft Excel / Google SheetsData Source: Data Pizza.xlsx - Raw Data Pizza Sales.csvTipe Data: Transaksi Penjualan (Order ID, Tanggal, Waktu, Harga, Kuantitas, Kategori, Ukuran).Output Files: Data Pizza.xlsx - Pivot Table.csv dan Data Pizza.xlsx - Dashboard.csv⚙️ Workflow Analisis (Fokus Excel/Sheets)Proses ini dibagi menjadi tiga fase kritis, yang dilakukan seluruhnya dalam lingkungan spreadsheet.Fase 1: Data Cleansing & Feature EngineeringTujuan: Menghitung metrik baru yang dibutuhkan untuk analisis di Pivot Table.Kolom BaruPerhitunganFungsi Excel KunciTotal RevenueHarga x Kuantitas= unit_price * quantityBulan (Month)Ekstraksi Bulan dari tanggal.=TEXT(order_date, "mmmm")Hari (Day)Ekstraksi Hari dari tanggal.=TEXT(order_date, "dddd")Jam (Hour)Ekstraksi Jam dari waktu.=HOUR(order_time)Total Order UnikPenghitungan total transaksi unik.=COUNTA(UNIQUE(order_id_column))Fase 2: Pivot Table & Agregasi DataPivot Table adalah inti dari analisis, merangkum puluhan ribu baris transaksi menjadi wawasan terstruktur.Pivot Table Kinerja Global: Menghitung SUM dari Total Revenue dan Total COUNT order_id untuk mendapatkan KPI AOV.Pivot Table Tren: Rows: Bulan, Values: SUM Total Revenue (Sumber untuk Line Chart Seasonality).Pivot Table Prioritas: Rows: pizza_name, Values: SUM quantity (Menggunakan Value Filter Top 10).Pivot Table Segmentasi: Rows: pizza_category, Columns: pizza_size, Values: SUM Total Revenue (Untuk menganalisis kontribusi ukuran).Fase 3: Dashboard Visualisasi InteraktifData dari setiap Pivot Table dihubungkan ke visualisasi yang tepat pada sheet Dashboard.VisualisasiTipe ChartWawasan KritisTren Pendapatan BulananLine ChartMengidentifikasi Puncak di Juli dan Penurunan di September.Quantity per CategoryDonut ChartMenetapkan prioritas inventaris: Classic & Supreme adalah kategori volume tertinggi.Revenue by SizeStacked Bar ChartMenentukan strategi harga: Ukuran Large (L) adalah pendorong Revenue utama di hampir semua kategori.InteraktivitasSlicerMenghubungkan Slicer (pizza_category) ke semua chart untuk analisis dinamis dan ad-hoc.💡 Wawasan Utama dan Rekomendasi (Key Insights)Hasil analisis ini memberikan arahan yang jelas bagi Tim Operasional dan Manajemen:Optimalisasi Kapasitas (Operations): Fokus pada efisiensi produksi The Classic Deluxe Pizza dan The Barbecue Chicken Pizza karena keduanya adalah Top 2 sellers dalam hal kuantitas.Perencanaan Inventaris (Operations): Kategori Classic dan Supreme harus selalu memiliki buffer stock bahan baku yang lebih tinggi untuk menghindari out-of-stock pada periode sibuk.Forecasting & Pemasaran (Data Analyst): Fluktuasi Revenue yang jelas menunjukkan seasonality. Manajemen harus merencanakan kampanye promosi agresif di bulan-bulan lembah (seperti September) dan mengalokasikan anggaran untuk peningkatan kapasitas di bulan puncak (seperti Juli).Peningkatan AOV: Dengan AOV sebesar ~$37.56, dorongan untuk upselling dari ukuran Medium ke Large harus diformalkan sebagai strategi penjualan utama, karena ukuran L berkontribusi paling besar terhadap pendapatan.
+# 🍕 Data-Driven Operations: Analisis Kinerja Penjualan Pizza (2015)
+
+## 📌 Ringkasan Eksekutif
+
+Proyek ini menyajikan analisis komprehensif atas data transaksi penjualan pizza selama setahun (2015) untuk mengidentifikasi *Key Performance Indicators* (KPI) operasional dan peluang peningkatan Revenue. Seluruh analisis dilakukan menggunakan fitur-fitur canggih pada **Microsoft Excel/Google Sheets**, dan hasilnya dirangkum dalam *Dashboard* Interaktif untuk mendukung keputusan strategis pada aspek *Forecasting*, *Inventaris*, dan *Pricing*.
+
+**Fokus Analisis:** Optimasi Operasi dan Wawasan Data Bisnis.
+
+## 🎯 Tujuan Utama (Business Questions)
+
+Analisis ini secara spesifik bertujuan menjawab pertanyaan-pertanyaan kunci yang diajukan oleh Tim Manajemen (lihat `Data Pizza.xlsx - Question.csv`):
+
+1.  Berapa Total Revenue, Total Order, dan **Average Order Value (AOV)**?
+2.  Bagaimana tren pendapatan bulanan (*Seasonality*)?
+3.  Apa saja **10 Pizza Terlaris** (*Top Sellers*) berdasarkan kuantitas?
+4.  Bagaimana kontribusi Revenue berdasarkan **Kategori** dan **Ukuran** pizza?
+
+## 🛠️ Tools dan Data
+
+* **Primary Tool:** Microsoft Excel / Google Sheets
+* **Data Source:** `Data Pizza.xlsx - Raw Data Pizza Sales.csv` (Data Transaksi Harian)
+* **Output:** Dashboard Interaktif (`Dashboard.csv`) dan Pivot Table (`Pivot Table.csv`).
+
+## ⚙️ Workflow Analisis Data (Excel/Sheets Focused)
+
+### Fase 1: Data Cleansing & Feature Engineering
+
+Menciptakan kolom-kolom baru (`Feature Engineering`) untuk memungkinkan agregasi dan analisis mendalam.
+
+| Kolom Baru | Perhitungan | Fungsi Excel Kunci | Tujuan Operasional |
+| :--- | :--- | :--- | :--- |
+| **Total Revenue** | Harga x Kuantitas | **`= unit_price * quantity`** | Menghitung total penjualan per item. |
+| **Nama Bulan** | Ekstraksi Bulan dari tanggal. | **`=TEXT(order_date, "mmmm")`** | Analisis Tren & Forecasting. |
+| **Nama Hari** | Ekstraksi Hari dari tanggal. | **`=TEXT(order_date, "dddd")`** | Analisis *Workload* dan Jadwal Staf. |
+| **Total Order Unik** | Agregasi ID pesanan unik. | **`=COUNTA(UNIQUE(order_id_column))`** | Menghitung beban kerja operasional sebenarnya. |
+
+### Fase 2: Pivot Table dan Agregasi (Inti Analisis)
+
+Menggunakan fitur **Pivot Table** untuk merangkum 49.574 baris data menjadi wawasan yang terstruktur.
+
+1.  **KPI Global:** Menghitung **Total Revenue** (`SUM`), **Total Order** (`COUNT UNIQUE`), dan **AOV** ($\frac{\text{Total Revenue}}{\text{Total Order}}$).
+2.  **Tren Pendapatan:** **Rows:** `Nama Bulan`, **Values:** `SUM of Total Revenue`.
+3.  **Top 10 Sellers:** **Rows:** `pizza_name`, **Values:** `SUM of quantity` (Menggunakan **Value Filter: Top 10**).
+4.  **Revenue Segmentasi:** **Rows:** `pizza_category`, **Columns:** `pizza_size`, **Values:** `SUM of Total Revenue`.
+
+### Fase 3: Dashboard Visualisasi dan Interaktivitas
+
+Membuat *Dashboard* yang ringkas dan kuat, dihubungkan langsung ke Pivot Table.
+
+| Visualisasi | Tipe Chart | Wawasan yang Diperkuat |
+| :--- | :--- | :--- |
+| **Tren Revenue Bulanan** | Line Chart | Menunjukkan *Seasonality* yang kuat (**Puncak Juli**, **Lembah September**). |
+| **Quantity by Category** | Donut Chart | Menetapkan
