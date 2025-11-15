@@ -1,7 +1,8 @@
-# 🍕 Data-Driven Pizza Sales Performance Analysis 
+# 🍕 Data-Driven Operations: Analisis Kinerja Penjualan Pizza (2015)
+
 ## 📌 Ringkasan Eksekutif (Executive Summary)
 
-Proyek ini adalah demonstrasi *skill* **Data Analysis** dengan fokus pada **Operations**, bertujuan mengubah data transaksi mentah selama satu tahun menjadi *actionable insights*. Proses analisis dilakukan secara efisien menggunakan **Microsoft Excel/Google Sheets**, menghasilkan *Interactive Dashboard* yang berfungsi sebagai panduan utama bagi manajemen untuk **Optimasi Revenue**, **Forecasting**, dan peningkatan **Efisiensi Inventaris**.
+Proyek ini adalah demonstrasi *skill* **Data Analysis** dengan fokus pada **Operations**, bertujuan mengubah data transaksi mentah selama satu tahun menjadi *actionable insights*. Proses analisis dilakukan secara efisien menggunakan **Microsoft Excel/Google Sheets**, menghasilkan *Dashboard* yang menjadi panduan utama bagi manajemen untuk **Optimasi Revenue**, **Forecasting**, dan peningkatan **Efisiensi Inventaris**.
 
 ## 🎯 Tujuan Proyek (Business Objectives)
 
@@ -15,7 +16,7 @@ Analisis ini didesain untuk menjawab empat pertanyaan bisnis yang paling krusial
 ## 🛠️ Tools dan Data
 
 * **Primary Tool:** Microsoft Excel / Google Sheets
-* **Data Source:** `Data Pizza.xlsx - Raw Data Pizza Sales.csv` (Data Transaksi Harian)
+* **Data Source:** Data Transaksi Penjualan Harian (`Data Pizza.xlsx - Raw Data Pizza Sales.csv`)
 
 ---
 
@@ -42,24 +43,8 @@ Menggunakan **Pivot Table** sebagai mesin analisis untuk merangkum data dan menj
 
 ### Fase 3: Dashboard dan Interaktivitas
 
-Visualisasi yang *clear* dan *concise* untuk komunikasi wawasan yang efektif, dilengkapi interaktivitas.
+Visualisasi yang *clear* dan *concise* untuk komunikasi wawasan yang efektif.
 
 | Visualisasi | Tipe Chart | Wawasan yang Diperkuat |
 | :--- | :--- | :--- |
-| **Tren Revenue Bulanan** | Line Chart | Menunjukkan *Seasonality* jelas (**Puncak Juli**, **Lembah September**) untuk *planning*. |
-| **Quantity per Category** | Donut Chart | Prioritas *Inventory*: **Classic (30%)** dan **Supreme (24%)** mendominasi volume. |
-| **Revenue by Size** | Stacked Bar Chart | Strategi *Upselling*: Ukuran **Large (L)** adalah *Revenue Driver* utama. |
-| **Interaktivitas** | Slicer | Menghubungkan *Slicer* (`pizza_category`) ke semua *chart* untuk *ad-hoc analysis*. |
-
----
-
-## 💡 Key Insights & Rekomendasi Strategis
-
-Analisis data menghasilkan temuan yang langsung dapat diimplementasikan untuk meningkatkan efisiensi dan profit:
-
-| Insight | Rekomendasi Strategis (Operations & Revenue) |
-| :--- | :--- |
-| **Seasonal Fluctuation** | **Forecasting & Marketing:** Alokasikan *Marketing Budget* untuk promosi di bulan **September** dan **November** (*Low Season*) untuk menstabilkan *Revenue Stream*. |
-| **Dominasi Produk** | **Operations Efficiency:** Lakukan *Time & Motion Study* pada proses pembuatan **The Classic Deluxe Pizza** (Top 1) untuk mengurangi *preparation time* dan mengatasi potensi *bottleneck*. |
-| **AOV Potensial** | **Pricing Strategy:** Fokus pada *Upselling* ke ukuran **Large (L)** dan buat *Bundling Packages* yang menguntungkan, karena ukuran L terbukti paling bernilai. |
-| **Fokus Kategori** | **Inventory Management:** Tetapkan **Classic** dan **Supreme** sebagai kategori *Tier 1*. Tingkatkan *buffer stock* untuk mencegah *stock-out* pada *Peak Season*. |
+| **Tren Revenue Bulanan** | Line Chart
